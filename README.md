@@ -1,7 +1,7 @@
 # TextDataAug
 
-TextDataAug is pipeline has implemnted for Boosting Performance on
-Text Classification tasks by using "Easy Data Augmentation" Technique and "Back-Translation" Technique.
+TextDataAug is pipeline has implemented for Boosting Performance on
+Text Classification tasks by using "Easy Data Augmentation" , "Back-Translation" techniques and to support 22 languages.
 
 The pipeline has been implemented based on [EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196.pdf) and [Low Resource Text Classification with ULMFit and Backtranslation](https://arxiv.org/pdf/1903.09244.pdf).
 
@@ -40,5 +40,5 @@ print(tda.AugPipeLine("Great movie. This is the type of movie you just want to w
 ````
 References
 --
-*[EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196.pdf)
-*[Low Resource Text Classification with ULMFit and Backtranslation](https://arxiv.org/pdf/1903.09244.pdf)
+* [EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196.pdf)
+* [Low Resource Text Classification with ULMFit and Backtranslation](https://arxiv.org/pdf/1903.09244.pdf)
