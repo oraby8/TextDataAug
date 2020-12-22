@@ -2,11 +2,31 @@ from nltk.corpus import stopwords,wordnet
 from random import choice,shuffle,uniform,randint
 from string import punctuation,digits
 from translate import BackTranselate
+from langcodes import LANGCODES,WORDNETLAN
 
 class DataAugmentation:
-	def __init__(self,lan='english'):
-		self.lan=lan
+	def __init__(self,text_language='english'):
+		'''
+		>>DataAugmentation(text_language)
+		>>DataAugmentation('arabic')
+		>>DataAugmentation('english')
+		>>DataAugmentation('Spanish')
+		'''
+		self.lan=text_language
+		self.syn_lan=self.Lang_syn('lan')
+		self.wordnet_lan=self.Lang_syn('wordnet')
 		self.stopwords_list=stopwords.words(self.lan)
+
+	def Lang_syn(self,type_):
+		if type_=='lan':
+			lan=LANGCODES
+		else:
+			lan=WORDNETLAN
+		for syn,name in lan.items():
+			if syn.lower()==self.lan.lower():
+				return name
+		print('unkown language name.')
+		return 'en'
 
 	def SentProcessing(self,sent):
 		low_sent=sent.lower()
@@ -16,7 +36,7 @@ class DataAugmentation:
 	def get_synonyms(self,word):
 		''' get synonyms for wordnet data courps'''
 		synonyms = set()
-		for syn in wordnet.synsets(word): 
+		for syn in wordnet.synsets(word,lang=self.wordnet_lan): 
 			for l in syn.lemmas(): 
 				synonym = l.name().replace("_", " ").replace("-", " ").lower()
 				synonym = "".join([char for char in synonym if char in ' qwertyuiopasdfghjklzxcvbnm'])
@@ -113,10 +133,10 @@ class DataAugmentation:
 
 		return ' '.join(new_sents)
 
-	def AugPipeLine(self,sent,num,probability,bktr=True):
+	def AugPipeLine(self,sent,num,probability,bktr=True,translate_to='es'):
 		'''DataAugmentation pipeline has (SynonymReplacement,Random_Swap,Random_Swap,Random_Deletion).
 		#how to call it 
-		AugPipeLine(sent,num,probability,bktr=True)
+		AugPipeLine(sent,num,probability,bktr=True,translate_to='es')
 		'''
 		listofeda=[]
 		pro_sent=self.SentProcessing(sent)
@@ -127,9 +147,6 @@ class DataAugmentation:
 		listofeda.append(self.Random_Deletion(sent,probability))
 		if bktr:
 			tran=BackTranselate()
-			listofeda.append(tran.backtranselate(pro_sent,'en','ar'))
+			listofeda.append(tran.backtranselate(pro_sent,self.syn_lan,translate_to))
 
 		return listofeda
-
-a=DataAugmentation()
-print(a.AugPipeLine("it's really good movie i loved it",2,0.2))
