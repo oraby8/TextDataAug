@@ -2,6 +2,7 @@
 
 TextDataAug is pipeline has implemnted for Boosting Performance on
 Text Classification tasks by using "Easy Data Augmentation" Technique and "Back-Translation" Technique.
+
 The pipeline has been implemented based on [EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196.pdf) and [Low Resource Text Classification with ULMFit and Backtranslation](https://arxiv.org/pdf/1903.09244.pdf).
 
 TextDataAug supports 22 languages:
@@ -13,15 +14,17 @@ Requirements
 
 Python 3
 The following software packages are dependencies and will be installed automatically.
-''' shell
+''' cmd
 $ pip install numpy nltk gensim textblob googletrans 
 '''
 The following code downloads stopwords amd wordnet data
+
 '''shell
 nltk.download('stopwords')
 nltk.download('omw')
 nltk.download('wordnets')
 '''
+
 Usage
 --
 '''shell
