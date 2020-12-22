@@ -38,3 +38,7 @@ text_out=tda.AugPipeLine("Great movie. This is the type of movie you just want t
 tda=DataAugmentation('english')
 print(tda.AugPipeLine("Great movie. This is the type of movie you just want to watch time and time again. A real classic.",num=2,probability=0.2,bktr=True,translate_to='es'))
 ````
+References
+--
+*[EDA: Easy Data Augmentation Techniques for Boosting Performance on Text Classification Tasks](https://arxiv.org/pdf/1901.11196.pdf)
+*[Low Resource Text Classification with ULMFit and Backtranslation](https://arxiv.org/pdf/1903.09244.pdf)
