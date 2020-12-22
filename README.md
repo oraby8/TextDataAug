@@ -13,13 +13,16 @@ Requirements
 --
 
 Python 3
+
 The following software packages are dependencies and will be installed automatically.
-''' bash
+
+'''
 $ pip install numpy nltk gensim textblob googletrans 
 '''
+
 The following code downloads stopwords amd wordnet data
 
-'''bash
+'''
 nltk.download('stopwords')
 nltk.download('omw')
 nltk.download('wordnets')
@@ -27,11 +30,11 @@ nltk.download('wordnets')
 
 Usage
 --
-'''bash
+'''
 tda=DataAugmentation('english')
 text_out=tda.AugPipeLine("Great movie. This is the type of movie you just want to watch time and time again. A real classic.)
 '''
-'''bash
+'''
 tda=DataAugmentation('english')
 print(tda.AugPipeLine("Great movie. This is the type of movie you just want to watch time and time again. A real classic.",num=2,probability=0.2,bktr=True,translate_to='es'))
 '''
